@@ -1,0 +1,35 @@
+<view class="home-contain" hover-class="none" hover-stop-propagation="false">
+  <view class='home-tag'>
+    <view wx:for-items="{{classifys}}" class='home-tag-word'>
+      <span wx:if="{{item.checked}}" style="color:#0091ff" >{{item.name}}</span>
+      <span wx:else="{{!item.checked}}" bindtap="onChangeClassify" data-id="{{item.name}}">{{item.name}}</span>
+    </view>
+  </view>
+  <view class='home-type'>
+<view class="nav-tabs">
+  <view class="tab-list  {{currentTab == idx?'active':'default'}}" wx:for="{{tabArray}}" wx:for-index="idx" wx:for-item="item" data-current="{{idx}}" bindtap="swichNav">{{item.title}}</view>
+<swiper current="{{currentTab}}" class="tab-content" duration="300" bindchange="bindChange">
+  <swiper-item wx:for="{{tabArray}}"  wx:for-item="item"   wx:for-index="idx" class="order-contain">
+  </swiper-item>
+ </swiper>
+  </view>
+    <!-- <span class='home-tag-word'>aaa</span>
+    <span class='home-tag-word'>aaa</span> -->
+  </view>
+  <view class='home-card' wx:for-items="{{content}}" wx:key="{{index}}" bindtap='onGotoDetail' data-id="{{item.id}}">
+    <view class='card-name'>
+      {{item.name}}
+    </view>
+    <view class='card-title'>
+      {{item.title}}
+    </view>
+    <view class='card-bottom'>
+      <span class='card-bottom-view'>
+        <image src='../../images/view.png'></image>
+        {{item.viewPerson}}</span>
+      <span class='card-bottom-like'>
+        <image src='../../images/like.png'></image>
+        {{item.like}}</span>
+    </view>
+  </view>
+</view>
